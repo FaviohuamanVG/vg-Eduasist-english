@@ -1,6 +1,51 @@
-# vg-ms-user
+# EduAssist Social Project - PRS
 
 Este microservicio es responsable de gestionar datos relacionados con usuarios, incluyendo cuentas de usuario, información de profesores, asignaciones usuario-sede y permisos dentro del sistema Valle Grande. Proporciona una API RESTful para diversas operaciones sobre estas entidades.
+
+## Stack Tecnológico
+
+Este microservicio está construido utilizando el siguiente stack tecnológico:
+
+-   **Lenguaje de Programación**: Java
+-   **Framework**: Spring Boot
+-   **Base de Datos**: MongoDB (utilizando Spring Data MongoDB Reactive)
+-   **Gestor de Dependencias**: Maven
+-   **Contenerización**: Docker
+-   **API**: RESTful
+-   **Manejo de Asincronía**: Project Reactor (evidenciado por el uso de `Mono` y `Flux` en los repositorios reactivos)
+
+## 🛠️ Setup Instructions (Imperatives)
+1. **Clone** the repository:  
+   `git clone https://github.com/FaviohuamanVG/vg-Eduasist-english.git`  
+2. **Navigate** into backend:  
+   `cd main`  
+3. **Run** Spring Boot app:  
+   `./mvnw spring-boot:run`  
+4. **Navigate** into frontend:  
+   `cd ../frontend`  
+5. **Install** dependencies and **serve** the Angular app:  
+   `npm install`  
+   `ng serve`  
+
+## 🧩 How to Use the App (Advice with “should”)
+
+- You **should** open `http://localhost:4200` after both backend and frontend are running.  
+- You **should** create a user account to access the page. 
+- You **should** submit reports via the "FirebaseStudio" page after trying each tutorial.
+
+## 🎯 Future Plans (Advice & Suggestions)
+- We **should** integrate Firebase hosting before the final release.  
+- We **should** implement user roles (admin, director, teacher, secretery and assistant) to control content access.  
+- We **should** schedule community coding workshops during the semester.
+
+
+## 🧑‍🏫 Contributing (Imperatives & Advice)
+- **Fork** this repo.  
+- **Create** a feature branch:  
+  `git checkout -b feature/vg-english-practice`  
+- **Implement**, **test**, and **lint** your feature locally.  
+- **Open** a Pull Request with a clear summary and description.  
+  > You **should** add “Fixes #\<issue-number\>” in your PR if it's related to an open issue.
 
 ## Estructura del Proyecto
 
