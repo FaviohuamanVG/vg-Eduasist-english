@@ -1,18 +1,19 @@
 # EduAssist Social Project - PRS
 
-Este microservicio es responsable de gestionar datos relacionados con usuarios, incluyendo cuentas de usuario, información de profesores, asignaciones usuario-sede y permisos dentro del sistema Valle Grande. Proporciona una API RESTful para diversas operaciones sobre estas entidades.
+This microservice is responsible for managing user-related data, including user accounts, teacher information, user-site assignments, and permissions within the Valle Grande system. It provides a RESTful API for various operations on these entities.
 
-## Stack Tecnológico
+##Technology Stack
 
-Este microservicio está construido utilizando el siguiente stack tecnológico:
+This microservice is built using the following technology stack:
 
--   **Lenguaje de Programación**: Java
--   **Framework**: Spring Boot
--   **Base de Datos**: MongoDB (utilizando Spring Data MongoDB Reactive)
--   **Gestor de Dependencias**: Maven
--   **Contenerización**: Docker
--   **API**: RESTful
--   **Manejo de Asincronía**: Project Reactor (evidenciado por el uso de `Mono` y `Flux` en los repositorios reactivos)
+- **Programming Language**: Java
+- **Framework**: Spring Boot
+- **Database**: MongoDB (using Spring Data MongoDB Reactive)
+- **Dependency Manager**: Maven
+- **Database**: Mongo
+- **Containerization**: Docker
+- **API**: RESTful
+- **Asynchrony Handling**: Project Reactor (evidenced by the use of `Mono` and `Flux` in the reactive repositories)
 
 ## 🛠️ Setup Instructions (Imperatives)
 1. **Clone** the repository:  
@@ -38,14 +39,15 @@ Este microservicio está construido utilizando el siguiente stack tecnológico:
 - We **should** implement user roles (admin, director, teacher, secretery and assistant) to control content access.  
 - We **should** schedule community coding workshops during the semester.
 
+## 📁 Repository Structure
+```text
+/cetpro-social-project
+├── vg-ms-users/        # Java 17 + Spring Boot REST API
+├── EduAssist/       # React app
+├── README.md       # ← You are here
+├── .env.example    # Environment variables template
+```
 
-## 🧑‍🏫 Contributing (Imperatives & Advice)
-- **Fork** this repo.  
-- **Create** a feature branch:  
-  `git checkout -b feature/vg-english-practice`  
-- **Implement**, **test**, and **lint** your feature locally.  
-- **Open** a Pull Request with a clear summary and description.  
-  > You **should** add “Fixes #\<issue-number\>” in your PR if it's related to an open issue.
 
 ## Estructura del Proyecto
 
@@ -59,6 +61,28 @@ El proyecto sigue un patrón de arquitectura en capas (similar a Puertos y Adapt
     -   **`repository`**: Interfaces para el acceso a datos (usando Spring Data MongoDB). Spring Data proporciona las implementaciones automáticamente.
     -   **`rest`**: Controladores REST que exponen los endpoints de la API y manejan las solicitudes y respuestas HTTP.
     -   **`service`**: (Nota: Aunque existe un paquete 'service' directamente bajo infrastructure, los servicios de lógica de negocio principales están bajo `application/service`. Este paquete de servicio de infraestructura podría contener servicios técnicos o adaptadores).
+
+## 🧑‍🏫 Contributing (Imperatives & Advice)
+- **Fork** this repo.  
+- **Create** a feature branch:  
+  `git checkout -b feature/vg-english-practice`  
+- **Implement**, **test**, and **lint** your feature locally.  
+- **Open** a Pull Request with a clear summary and description.  
+  > You **should** add “Fixes #\<issue-number\>” in your PR if it's related to an open issue.
+
+## 🚀 Deployment Requirements (Must & Need To)
+- You **must** set the environment variables:
+- MONGODB_URI= mongodb+srv://faviohuaman:whQVhuBsOgu0C0M4@cluster0.zkqvx.mongodb.net/msvc-prs?retryWrites=true&w=majority
+- JWT_SECRET=xlskkjjs123452
+- - You **need to** enable CORS in the Spring configuration for frontend access.  
+- You **must** build the frontend before deployment:  
+`npm run build` in `/app-frontend-EduAsist/`  
+Upload contents of `student/` to your hosting platform.
+
+## 💡 Best Practices & Tips
+- You **should** write unit tests.  
+- You **should** document any new REST endpoints in the README or API specification.  
+- You **should** run `mvn clean` and `npm run lint` before each commit.
 
 ## Endpoints de la API
 
