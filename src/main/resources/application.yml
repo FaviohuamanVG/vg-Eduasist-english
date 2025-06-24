@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://faviohuaman:whQVhuBsOgu0C0M4@cluster0.zkqvx.mongodb.net/msvc-prs?retryWrites=true&w=majority
+
+server:
+  port: 8080
