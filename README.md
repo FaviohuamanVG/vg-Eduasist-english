@@ -49,18 +49,18 @@ This microservice is built using the following technology stack:
 ```
 
 
-## Estructura del Proyecto
+## Project Structure
 
-El proyecto sigue un patrón de arquitectura en capas (similar a Puertos y Adaptadores o Hexagonal), organizado en paquetes distintos:
+The project follows a layered architecture pattern (similar to Ports and Adapters or Hexagonal), organized into distinct packages:
 
--   **`application/service`**: Contiene la lógica de negocio principal y los casos de uso de la aplicación. Las clases aquí orquestan las operaciones sobre los modelos de dominio e interactúan con la capa de infraestructura (repositorios).
--   **`domain/model`**: Define las entidades centrales del dominio (objetos de negocio) como `User`, `Teacher`, `UserSede` y `Permission`. Son objetos Java simples que representan la estructura de los datos.
--   **`infrastructure`**: Maneja las preocupaciones externas y los detalles técnicos, incluyendo:
-    -   **`config`**: Clases de configuración para la aplicación.
-    -   **`exception`**: Clases de excepción personalizadas.
-    -   **`repository`**: Interfaces para el acceso a datos (usando Spring Data MongoDB). Spring Data proporciona las implementaciones automáticamente.
-    -   **`rest`**: Controladores REST que exponen los endpoints de la API y manejan las solicitudes y respuestas HTTP.
-    -   **`service`**: (Nota: Aunque existe un paquete 'service' directamente bajo infrastructure, los servicios de lógica de negocio principales están bajo `application/service`. Este paquete de servicio de infraestructura podría contener servicios técnicos o adaptadores).
+-   **`application/service`**: It contains the main business logic and use cases of the application. The classes here orchestrate operations on the domain models and interact with the infrastructure layer (repositories).
+-   **`domain/model`**: Define the central entities of the domain (business objects) as `User`, `Teacher`, `UserSede`, and `Permission`. They are simple Java objects that represent the structure of the data.
+-   **`infrastructure`**: Manages external concerns and technical details, including:
+    -   **`config`**: Configuration classes for the application.
+    -   **`exception`**: Customized exception classes.
+    -   **`repository`**: Interfaces for data access (using Spring Data MongoDB). Spring Data provides the implementations automatically.
+    -   **`rest`**: REST controllers that expose the API endpoints and handle HTTP requests and responses.
+    -   **`service`**: (Note: Although there is a 'service' package directly under infrastructure, the main business logic services are under `application/service`. This infrastructure service package may contain technical services or adapters).
 
 ## 🧑‍🏫 Contributing (Imperatives & Advice)
 - **Fork** this repo.  
@@ -175,29 +175,29 @@ A continuación se listan los endpoints de la API REST disponibles proporcionado
     -   Variable de Ruta: `id` (ID de la asignación usuario-sede).
     -   Respuesta: Objeto `UserSede` activado.
 
-### Endpoints de Permiso (`/permissions`)
+### Permissions Endpoints (`/permissions`)
 
-*(Nota: Basado en la estructura de tu proyecto, podría existir un controlador `PermissionRest`. Los siguientes endpoints son inferidos basados en los endpoints de `User` relacionados con permisos. Podrías necesitar verificar/añadir endpoints reales si existe un `PermissionRest` dedicado)*
+*(Note: Depending on the structure of your project, there may be a `PermissionRest` controller. The following endpoints are inferred based on the `User` endpoints related to permissions. You may need to verify/add actual endpoints if there is a dedicated `PermissionRest`.)*
 
--   *(Potenciales endpoints en un PermissionRest dedicado, si existe:)*
+-   *(Potential endpoints in a dedicated PermissionRest, if it exists:)*
     -   `GET /permissions`: Obtiene todos los permisos disponibles.
     -   `POST /permissions`: Crea un nuevo permiso.
     -   `DELETE /permissions/{id}`: Elimina un permiso.
 
-## Construcción y Ejecución con Docker
+## Construction and Execution with Docker
 
-El proyecto incluye un `Dockerfile` para construir una imagen Docker para el microservicio.
+The project includes a `Dockerfile` to build a Docker image for the microservice.
 
-1.  **Construir la Imagen Docker:**
+1. **Build the Docker Image:**
     ```bash
     docker build -t vg-ms-user .
     ```
-    (Este comando utiliza el wrapper `mvnw` dentro del contenedor para construir el JAR de la aplicación, como se define en el Dockerfile).
+    (This command uses the `mvnw` wrapper inside the container to build the application's JAR, as defined in the Dockerfile).
 
-2.  **Ejecutar el Contenedor Docker:**
+2. **Run the Docker Container:**
     ```bash
     docker run -p 8080:8080 vg-ms-user
     ```
-    (Este comando mapea el puerto 8080 de tu máquina host al puerto 8080 dentro del contenedor, donde se ejecuta la aplicación).
+    (This command maps port 8080 of your host machine to port 8080 inside the container, where the application runs.)
 
-**Nota:** El Dockerfile usa `target/your-application.jar`. Asegúrate de que esto coincida con el nombre real del archivo JAR generado por Maven después de la construcción (`./mvnw clean package`).
+**Note:** The Dockerfile uses `target/your-application.jar`. Make sure this matches the actual name of the JAR file generated by Maven after the build (`./mvnw clean package`).
